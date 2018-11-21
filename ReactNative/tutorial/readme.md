@@ -76,3 +76,114 @@ Logs for your project will appear below. Press Ctrl+C to exit.
 >$ npm run ios
 >$ npm run android
 
+# [Learn the Basic](https://facebook.github.io/react-native/docs/tutorial)
+
+`React Native`가 `React`와 비슷하지만, 웹 콤포넌트가 아닌 네이비트 콤포넌트를 사용한다. 그래서 `React Native`의 기본 구조를 알아야하고, `React`의 `JSX`, `state`, `props`과 같은 기본적인 컨셉도 알아야한다.  
+이제 `React Native`을 공부해보자.   
+
+## Hello World
+
+고대의 모든 프로그래밍 언어들과 같이 'Hello World'부터 출력해보자.  
+`React Native`도 `React`와 동일한 `App.js`앱의 Entry Point이다. 따라서, 여기에 코드를 작성해주면된다.  
+공식문서의 예제에는 CSS 적용을 안해두었지만, 내가 테스트했던 아이폰 모델(iPhone XR 12.1)의 경우 문자가 화면 상단으로 넘어가는 문제가 있어서 문자를 중앙에 표시하도록 CSS를 적용해두었다.  
+
+```javascript
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Hello World</Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+```
+
+그리고 `React`를 할때와의 차이점 하나는 번들링이 필요없어서 `Webpack`이 보이지 않는다는 것이다.  
+일단 위와 같이 코드를 수정하면 에뮬레티에 바로 반영(Hot Reload)되는 것을 확인할 수 있다. 일단 편리하다. 
+
+# Props
+
+`Component`로 전달되는 파라메터를 `Props`라고한다.
+`Props`는 `immutable`한 특징을 가지고 있다. 이러한 특징은 부모 콤포넌트의 `state`를 통해 전달 된 데이터를 자식 콤포넌트에서 임의로 변경하여 발생하게 되는 상태 관리의 어려움을 해결하기 위한것이다. 
+
+다음 예제는 `Greeting`이라는 user defind component에 `name`이라는 `Props`를 전달하여 출력한다.
+
+```javascript
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Greeting name='종수' />
+        <Greeting name='태원' />
+      </View>
+    );
+  }
+}
+
+class Greeting extends Component {
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Text>Hello {this.props.name}!</Text>
+      </View>
+    );
+  }
+}
+```
+
+# State
+
+`Component`는 자신의 상태값을 갖는다. 이 상태값을 변화에 따라 `Component`가 출력하는 정보가 변화한다.  
+이러한 상태값을 `React`와 `React Native`는 `state`를 통해 관리한다. 그리고 이 상태값이 변경되면 해당 콤포넌트를 새로 그립니다. 
+
+일반적으로, `state`는 `constructor`에서 초기화되고 변경을 원하는 곳에서 `setState` 메소드를 통해 변경할 수 있다.  
+
+앞서 만들었던 `Greeting` 콤포넌트에 인삿말을 1초에 한번씩 번갈아가며 화면에 나타났다가 사라지도록해보자.  
+이때 `state`에 인삿말이 화면에 출력될수 있는지 없는지에 대한 상태를 관리할 것이다. 
+
+```javascript
+class Greeting extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { isShowMsg: true }
+
+    setInterval(() => {
+      this.setState(previousState => {
+        return { isShowMsg: !previousState.isShowMsg }
+      })
+    }, 1000);
+  }
+
+  render() {
+    if (!this.state.isShowMsg)
+      return null;
+    
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Text>Hello {this.props.name}!</Text>
+      </View>
+    );
+  }
+}
+```
+
+# Style
+
+위 코드에서 CSS를 적용하는 부분이 독특해보일 것이다. `React Native`에서는 CSS도 콤포넌트화해서 쓸 수 있다.   
+적용된 CSS들은 기존에 '-'로 분리하던 부분을 CamelCase로 바꾼것이지 모두 CSS에 대응된다. 
