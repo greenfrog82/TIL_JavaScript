@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import InputTodo from './Components/InputTodo';
+import TodoInput from './Components/TodoInput';
 import TodoList from './Components/TodoList';
+import TodoFilter from './Components/TodoFilter';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <TodoList />
-        <InputTodo />
+        <TodoInput />
+        <TodoFilter />
       </View>
 
       // <View style={styles.container}>

@@ -1,29 +1,55 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View } from 'react-native';
+import { List, ListItem, CheckBox} from 'react-native-elements';
 
 export default class InputTodo extends Component {
   constructor() {
-      super()
+    super()
+    this.list = [
+      {
+        title: 'Appointments',
+        icon: 'av-timer',
+        flag: true,
+      },
+      {
+        title: 'Trips',
+        icon: 'flight-takeoff',
+        flag: false,
+      },
+      {
+        title: 'B-Trips',
+        icon: 'flight-takeoff',
+        flag: true,
+      },
+    ]
   }
-  render() {
+
+  renderRow ({item}) {
+   return (
+    //  <ListItemv
+    //    key={item.title}
+    //    title={item.title}
+    //    leftIcon={{name: item.icon}}
+    //  />
+    <CheckBox
+      key={item.title} 
+      title={item.title}
+      checked={item.flag}
+    />
+   )
+  }
+
+  render () {
     return (
-      <View>
-        <FlatList style={styles.container} 
-        data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-        ]}
-        renderItem={({item}) => 
-        <Text style={styles.item}>{item.key}</Text>} />
-      </View>
-    );
-  }
+      <List>
+        <FlatList
+          data={this.list}
+          renderItem={this.renderRow}
+          keyExtractor={item => item.name}
+        />
+      </List>
+    )
+  } 
 }
 
 const styles = StyleSheet.create({
