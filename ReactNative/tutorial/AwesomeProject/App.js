@@ -1,13 +1,39 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import InputTodo from './Components/InputTodo';
+import TodoList from './Components/TodoList';
+
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Greeting name='종수' />
-        <Greeting name='태원' />
+        <TodoList />
+        <InputTodo />
       </View>
+
+      // <View style={styles.container}>
+      // <View>
+      //   <View>
+      //     {/* <FlatList style={flat_list_styles.container}  */}
+      //   {/* <FlatList style={styles.container} */}
+      //     <FlatList
+      //       data={[
+      //           {key: 'Devin'},
+      //           {key: 'Jackson'},
+      //           {key: 'James'},
+      //           {key: 'Joel'},
+      //           {key: 'John'},
+      //           {key: 'Jillian'},
+      //           {key: 'Jimmy'},
+      //           {key: 'Julie'},
+      //         ]} renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>} />
+      //   </View>
+      //   <View>
+      //     <Text>Test</Text> 
+      //     <Button onPress={() => { alert('test') }} title='Click' />
+      //   </View>
+      // </View>
     );
   }
 }
@@ -40,7 +66,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    paddingTop: 50
+  }
 });
