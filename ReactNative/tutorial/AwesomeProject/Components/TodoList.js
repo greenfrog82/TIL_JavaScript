@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 class TodoList extends Component {
   constructor(props) {
       super(props)
-      console.log('TodoList -------- > ', this.props.todos);
   }
 
   renderRow ({item}) {
@@ -30,7 +29,7 @@ class TodoList extends Component {
         <FlatList
           data={this.props.todos}
           renderItem={this.renderRow}
-          keyExtractor={item => item.name}
+          keyExtractor={(item, index) => index.toString()}
         />
       </List>
     )

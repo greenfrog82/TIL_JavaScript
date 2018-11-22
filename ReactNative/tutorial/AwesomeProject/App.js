@@ -11,6 +11,8 @@ import reducer from './Reducers/TodoReducer'
 
 let store = createStore(reducer)
 
+// console.log('----- > store : ', store.getState());
+
 export default class App extends Component {
   render() {
     return (

@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, Button, View } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class TodoInput extends Component {
+import { addTodo } from '../Actions/TodoInpuAction'
+
+class TodoInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
   render() {
     return (
       <View style={styles.container}>
-        <TextInput placeholder='Type here your todo item'></TextInput> 
-        <Button title="Click" onPress={() => alert('test')}/>
+        <TextInput placeholder='Type here your todo item' onChangeText={text => this.setState({input: text})}></TextInput> 
+        {/* <Button title="Click" onPress={this.props.addTodo}/> */}
+        <Button title="Click" onPress={() => this.props.addTodo(this.state.input)}/>
       </View>
     );
   }
@@ -15,8 +23,12 @@ export default class TodoInput extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
+const mapDispatchToPros = {
+  addTodo
+}
+
+export default connect(null, mapDispatchToPros)(TodoInput)

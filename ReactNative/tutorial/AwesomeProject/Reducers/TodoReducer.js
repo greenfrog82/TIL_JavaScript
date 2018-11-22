@@ -4,22 +4,31 @@ let key_generator = 3;
 
 const INITIAL_STATE = [ 
       {
-        'id': 'test1', 
+        'id': '1', 
         'done': false,
         'msg': 'test 1',
       },
       {
-        'id': 'test2',
+        'id': '2',
         'done': true,
         'msg': 'test 2',
       }
     ];
 
 const todoReducer = (state = INITIAL_STATE, action) => {
+  console.log('------- > todoReducer');
+  console.log('------ > ', action);
+
   switch (action.type) {
     case 'ADD_TODO':
-      state[++key_generator] = action.playload;
-      return state;
+      return [
+        ...state,
+        {
+          id: (++key_generator).toString(),
+          done: false,
+          msg: action.payload,
+        }
+      ]
     default:
       return state
   }
