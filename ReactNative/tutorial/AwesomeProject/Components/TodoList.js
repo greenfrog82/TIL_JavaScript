@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, FlatList, View } from 'react-native';
-import { List, ListItem, CheckBox} from 'react-native-elements';
+import { StyleSheet, FlatList, View } from 'react-native';
+import { List, CheckBox} from 'react-native-elements';
+import { connect } from 'react-redux';
 
-export default class InputTodo extends Component {
-  constructor() {
-    super()
-    this.list = [
-      {
-        title: 'Appointments',
-        icon: 'av-timer',
-        flag: true,
-      },
-      {
-        title: 'Trips',
-        icon: 'flight-takeoff',
-        flag: false,
-      },
-      {
-        title: 'B-Trips',
-        icon: 'flight-takeoff',
-        flag: true,
-      },
-    ]
+class TodoList extends Component {
+  constructor(props) {
+      super(props)
+      console.log('TodoList -------- > ', this.props.todos);
   }
 
   renderRow ({item}) {
@@ -32,9 +17,9 @@ export default class InputTodo extends Component {
     //    leftIcon={{name: item.icon}}
     //  />
     <CheckBox
-      key={item.title} 
-      title={item.title}
-      checked={item.flag}
+      key={item.id} 
+      title={item.msg}
+      checked={item.done}
     />
    )
   }
@@ -43,7 +28,7 @@ export default class InputTodo extends Component {
     return (
       <List>
         <FlatList
-          data={this.list}
+          data={this.props.todos}
           renderItem={this.renderRow}
           keyExtractor={item => item.name}
         />
@@ -63,3 +48,9 @@ const styles = StyleSheet.create({
       height: 44,
   },
 });
+
+const mapStateToProps = (state) => ({
+  todos: state.todos
+});
+
+export default connect(mapStateToProps)(TodoList);
