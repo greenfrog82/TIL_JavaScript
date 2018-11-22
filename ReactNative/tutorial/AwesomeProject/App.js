@@ -10,7 +10,6 @@ import TodoFilter from './Components/TodoFilter';
 import reducer from './Reducers/TodoReducer'
 
 let store = createStore(reducer)
-// store.dispatch(addTodo('test'));
 
 export default class App extends Component {
   render() {
