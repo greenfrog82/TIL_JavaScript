@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { List, CheckBox} from 'react-native-elements';
 import { connect } from 'react-redux';
 
+import { updateTodo } from '../Actions/TodoListAction';
+
+
 class TodoList extends Component {
   constructor(props) {
-      super(props)
+      super(props);
+      console.log(this.props);
   }
 
   renderRow ({item}) {
-   return (
-    //  <ListItemv
-    //    key={item.title}
-    //    title={item.title}
-    //    leftIcon={{name: item.icon}}
-    //  />
-    <CheckBox
-      key={item.id} 
-      title={item.msg}
-      checked={item.done}
-    />
-   )
+    return (
+     <CheckBox
+       key={item.id} 
+       title={item.msg}
+       checked={item.done}
+       onPress={() => this.props.updateTodo(item.id, !item.done)}
+     />
+    )
   }
 
   render () {
+    console.log('----------- > TodoList render');
     return (
       <List>
         <FlatList
           data={this.props.todos}
-          renderItem={this.renderRow}
+          renderItem={this.renderRow.bind(this)}
           keyExtractor={(item, index) => index.toString()}
         />
       </List>
@@ -52,4 +53,8 @@ const mapStateToProps = (state) => ({
   todos: state.todos
 });
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToPros = {
+  updateTodo
+}
+
+export default connect(mapStateToProps, mapDispatchToPros)(TodoList);

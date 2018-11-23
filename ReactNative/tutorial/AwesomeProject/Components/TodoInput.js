@@ -8,12 +8,12 @@ class TodoInput extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+    console.log(props);
   }
   render() {
     return (
       <View style={styles.container}>
         <TextInput placeholder='Type here your todo item' onChangeText={text => this.setState({input: text})}></TextInput> 
-        {/* <Button title="Click" onPress={this.props.addTodo}/> */}
         <Button title="Click" onPress={() => this.props.addTodo(this.state.input)}/>
       </View>
     );
