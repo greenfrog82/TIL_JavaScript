@@ -24,11 +24,24 @@ class TodoList extends Component {
   }
 
   render () {
-    console.log('----------- > TodoList render');
+    let todos = this.props.todos.todos;
+    switch(this.props.todos.visible_type) {
+      case 1: 
+        todos = this.props.todos.todos.filter(todo => !todo.done);
+        break;
+      case 2: 
+        todos = this.props.todos.todos.filter(todo => todo.done);
+        break;
+      default:
+        break;
+    }
+
+    console.log('----------- > TodoList render : ', todos);
+
     return (
       <List>
         <FlatList
-          data={this.props.todos}
+          data={todos}
           renderItem={this.renderRow.bind(this)}
           keyExtractor={(item, index) => index.toString()}
         />
