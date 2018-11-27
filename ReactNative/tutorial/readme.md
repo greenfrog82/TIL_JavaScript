@@ -1,6 +1,6 @@
 # Tutorial
 
-`React Native`의 공식문서를 이를 공부해보자.   
+`React Native`의 공식문서를 통해 이를 공부해보자.   
 본 문서에서는 `iOS` 기준으로 내용을 설명할 것이다. 
 
 # [Getting Started](https://facebook.github.io/react-native/docs/getting-started)
@@ -16,7 +16,7 @@
 
 >$ npm install -g expo-cli
 
-그런 다음 명령을 통해 새로운 `React Native` Project를 시작할 수 있다.  
+그럼 다음 명령을 통해 새로운 `React Native` Project를 시작할 수 있다.  
 
 >$ expo init [React Native Project Name]
 
@@ -186,4 +186,5 @@ class Greeting extends Component {
 # Style
 
 위 코드에서 CSS를 적용하는 부분이 독특해보일 것이다. `React Native`에서는 CSS도 콤포넌트화해서 쓸 수 있다.   
-적용된 CSS들은 기존에 '-'로 분리하던 부분을 CamelCase로 바꾼것이지 모두 CSS에 대응된다. 
+적용된 CSS들은 기존에 '-'로 분리하던 부분을 CamelCase로 바꾼 것이지만, 모든 CSS를 사용할수 있는것은 아니고 제한적이다. 
+
