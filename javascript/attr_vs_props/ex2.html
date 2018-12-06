@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button" custom-attr="1"></div>
+        <script>
+            var attrs = document.getElementById('test').attributes;
+            console.log(attrs);
+            
+            var customAttr = document.getElementById('test').getAttribute('custom-attr');
+            console.log(typeof(customAttr));
+        </script>
+    </body>
+</html>

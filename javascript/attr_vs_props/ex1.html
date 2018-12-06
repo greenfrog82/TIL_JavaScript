@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    </head>
+    <body>
+        <div id="test" class="button" custom-attr="1"></div>
+        <script>
+            var attrId = document.getElementById('test').getAttribute('id');
+            var propId = document.getElementById('test').id;
+        
+            console.log(`attrId : ${attrId}`);
+            console.log(`propId : ${propId}`);
+        </script>
+    </body>
+</html>
