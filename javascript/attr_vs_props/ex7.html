@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button" value='foo'></div>
+        <script>
+            var div = document.getElementById('test');
+            div.value = 100;
+            console.log(div.getAttribute('value'));
+            div.setAttribute('value', '100');
+            console.log(div.value);
+        </script>
+    </body>
+</html>

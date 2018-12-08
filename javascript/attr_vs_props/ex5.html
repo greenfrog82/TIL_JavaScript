@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button" foo='1'></div>
+        <script>
+            var id = document.getElementById('test').id;
+            var className = document.getElementById('test').className;
+            var foo = document.getElementById('test').foo;
+
+            console.log(`id : ${id}`);
+            console.log(`className : ${className}`);
+            console.log(`foo : ${foo}`);
+        </script>
+    </body>
+</html>

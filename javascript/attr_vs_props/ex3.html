@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button"></div>
+        <script>
+            document.getElementById('test').foo = 1;
+            var foo = document.getElementById('test').foo;
+            console.log(`foo : ${foo}, ${typeof(foo)}`);
+        </script>
+    </body>
+</html>

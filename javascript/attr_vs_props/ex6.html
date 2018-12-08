@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button"></div>
+        <script>
+            var div = document.getElementById('test');
+            div.className = 'red-input';
+            console.log(div.getAttribute('class'));
+            div.setAttribute('class', 'green-input');
+            console.log(div.getAttribute('class'));
+        </script>
+    </body>
+</html>
