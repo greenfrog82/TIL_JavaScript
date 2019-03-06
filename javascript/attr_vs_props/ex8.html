@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <input id="test" class="control" type='checkbox'></input>
+        <script>
+            var chk = document.getElementById('test');
+            // Best Practice
+            var id = chk.id;
+            var className = chk.className;
+            var checked = chk.checked;
+            
+            console.log(`id : ${id}`);
+            console.log(`class : ${className}`);
+            console.log(`checked : ${checked}`);
+
+            checked = chk.checked = true;
+
+            console.log(`checked : ${checked}`);
+        </script>
+    </body>
+</html>

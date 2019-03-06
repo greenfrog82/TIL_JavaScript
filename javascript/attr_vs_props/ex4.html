@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="test" class="button"></div>
+        <script>
+            document.getElementById('test').foo = {
+                name: 'greenfrog', 
+                age: 37
+            };
+            var foo = document.getElementById('test').foo;
+            console.log(`foo : ${foo}, ${typeof(foo)}`);
+            console.log(`foo.name : ${foo.name}`);
+            console.log(`foo.age: ${foo.age}`);
+        </script>
+    </body>
+</html>
