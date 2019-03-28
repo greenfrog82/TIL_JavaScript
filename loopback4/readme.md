@@ -24,10 +24,10 @@ v11.5.0
 
 ```sh
 $ lb4 app
-? Project name: sample
+? Project name: getting-started
 ? Project description: loopback4
-? Project root directory: sample
-? Application class name: SampleApplication
+? Project root directory: getting-started
+? Application class name: getting-startedApplication
 ? Select features to enable in the project (Press <space> to select, <a> to toggle all, <i> to invert
  selection)Enable tslint, Enable prettier, Enable mocha, Enable loopbackBuild, Enable vscode, Enable
 docker, Enable repositories, Enable services
@@ -63,24 +63,57 @@ docker, Enable repositories, Enable services
    create src/__tests__/acceptance/home-page.acceptance.ts
    create src/__tests__/acceptance/ping.controller.acceptance.ts
    create src/__tests__/acceptance/test-helper.ts
-npm WARN sample@1.0.0 No license field.
+npm WARN getting-started@1.0.0 No license field.
 
 added 681 packages from 1475 contributors and audited 4589 packages in 46.759s
 found 7 vulnerabilities (1 low, 6 moderate)
   run `npm audit fix` to fix them, or `npm audit` for details
 
-Application sample was created in sample.
+Application getting-started was created in getting-started.
 
 Next steps:
 
-$ cd sample
+$ cd getting-started
 $ npm start
 ```
 
-### Staring the project
+## Staring the project
 
 기본으로 생성되는 프로젝트는 테스트를 위한 'ping' 라우터를 포함하고 있다. 다음 명령을 통해 LoopBack을 실행한 후 브라우저를 통해 http://127.0.0.1:3000/ping에 접속해보자. 
 
 >$ cd getting-started
 >$ npm start
+
+## Add your own controller
+
+다음 명령을 통해 `Conroller`를 추가할 수 있다. 
+
+>$ lb4 controller
+
+```sh
+$ lb4 controller
+? Controller class name: hello
+? What kind of controller would you like to generate? Empty Controller
+   create src/controllers/hello.controller.ts
+   update src/controllers/index.ts
+
+Controller hello was created in src/controllers/
+```
+
+앞서 생성한 `hello` controller를 열어서 다음과 같이 코드를 작성하자.
+
+```javascript
+import {get} from '@loopback/rest';
+
+export class HelloController {
+  @get('/hello')
+  hello(): string {
+    return 'Hello world!';
+  }
+}
+```
+
+## Test your application
+
+getting-started 프로젝트를 실행시킨 후 http://127.0.0.1:3000/hello에 접속해서 방금 만든 컨트롤러를 확인하자!
 
