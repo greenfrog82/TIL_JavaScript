@@ -10,15 +10,14 @@ export class OpenApiController {
   constructor() {}
 
   /**
-   * Returns a user based on a single ID, if the user does not have access to the pet
+   * 
    * 
 
-   * @returns pet response
+   * @returns demo response
    */
-  @operation('get', '/pets/{id}')
-  async findPetById(): Promise<string> {
-    // throw new Error('Not implemented');
-    return await 'test';
+  @operation('get', 'say/')
+  async say(): Promise<string> {
+    return await 'say';
   }
 
 }
