@@ -27,6 +27,9 @@ paths:
       #     schema:
       #       type: integer
       #       format: int64
+      operationId: hello
+      x-implementation: 
+        return await 'test';
       responses:
         '200':
           description: demo response
@@ -43,6 +46,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   say/:
     get:
+      operationId: say 
       responses:
         '200':
           description: demo response
@@ -57,7 +61,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
+  /users:
+    post:
+      operationId: users
+      summary: Adds a new user
+      requestBody:
+        content:
+          application/json:
+            schema:      # Request body contents
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+              example:   # Sample object
+                id: 10
+                name: Jessica Smith
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
 
 components:
   schemas:

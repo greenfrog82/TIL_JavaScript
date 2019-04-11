@@ -222,3 +222,6 @@ export class OpenApiController {
 
 아마도 openapi 옵션을 통한 controller 생성은 형식이 정해져 있으므로 이 옵션을 통해서 API를 생성하면 생성된 controller 파일이름을 변경해주는것이 옳바른 사용법인것 같다. 
 
+# Reference
+
+* [Turning OpenAPI Specifications into Action with LoopBack 4](https://strongloop.com/strongblog/loopback4-openapi-cli/)
